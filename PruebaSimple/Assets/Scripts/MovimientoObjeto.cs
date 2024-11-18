@@ -4,23 +4,34 @@ using UnityEngine;
 
 public class MovimientoObjeto : MonoBehaviour
 {
-    Rigidbody m_Rigidbody;
-    public float thrust = 20f;
+
+    //Declaro la variable de tipo RigidBody que luego asociaremos a nuestro Jugador
+    private Rigidbody rb;
+
+    //Declaro la variable pública velocidad para poder modificarla desde la Inspector window
+    [Range(1, 10)]
+    public float velocidad = 5;
 
     void Start()
     {
-        //Fetch the Rigidbody from the GameObject with this script attached
-        m_Rigidbody = GetComponent<Rigidbody>();
-        m_Rigidbody.AddForce(0, 0, thrust, ForceMode.Impulse);
+
+        //Capturo el rigidbody del jugador al iniciar el juego
+        rb = GetComponent<Rigidbody>();
+
     }
 
     void FixedUpdate()
     {
-        if (Input.GetButton("Jump"))
-        {
-            //Apply a force to this Rigidbody in direction of this GameObjects up axis
-            m_Rigidbody.AddForce(transform.up * thrust);
-        }
+
+        //Capturo el movimiento en horizontal y vertical de nuestro teclado
+        float movimientoH = Input.GetAxis("Horizontal");
+        float movimientoV = Input.GetAxis("Vertical");
+
+        //Genero el vector de movimiento asociado, teniendo en cuenta la velocidad
+        Vector3 movimiento = new Vector3(movimientoH * velocidad, 0.0f, movimientoV * velocidad);
+
+        //Aplico ese movimiento al RigidBody del jugador
+        rb.AddForce(movimiento);
+
     }
 }
-
