@@ -1,37 +1,67 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.XR;
 
 public class MovimientoObjeto : MonoBehaviour
 {
 
-    //Declaro la variable de tipo RigidBody que luego asociaremos a nuestro Jugador
-    private Rigidbody rb;
 
-    //Declaro la variable pública velocidad para poder modificarla desde la Inspector window
-    [Range(1, 10)]
-    public float velocidad = 5;
+    public CharacterController characterController;
 
-    void Start()
+    public float speed = 10f;
+
+    private float gravity = -9.81f;
+
+    public Transform groundCheck;
+    public float sphereRadius = 0.3f;
+    public LayerMask groundMask;
+
+    bool isGrounded;
+
+
+    Vector3 velocity;
+
+    public float jumpHeight = 3f;
+
+    void Update()
     {
 
-        //Capturo el rigidbody del jugador al iniciar el juego
-        rb = GetComponent<Rigidbody>();
+        isGrounded = Physics.CheckSphere(groundCheck.position, sphereRadius, groundMask);
 
-    }
+        if (isGrounded && velocity.y < 0)
+        {
+            velocity.y = -2f;
+        }
 
-    void FixedUpdate()
-    {
 
-        //Capturo el movimiento en horizontal y vertical de nuestro teclado
-        float movimientoH = Input.GetAxis("Horizontal");
-        float movimientoV = Input.GetAxis("Vertical");
+        float x = Input.GetAxis("Horizontal"); //Teclas A y D, tambien para mando
+        float z = Input.GetAxis("Vertical"); //Teclas W y S, tambien para mando
 
-        //Genero el vector de movimiento asociado, teniendo en cuenta la velocidad
-        Vector3 movimiento = new Vector3(movimientoH * velocidad, 0.0f, movimientoV * velocidad);
+        Vector3 move = transform.right * x + transform.forward * z;
 
-        //Aplico ese movimiento al RigidBody del jugador
-        rb.AddForce(movimiento);
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        {
+            velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
+        }
+
+
+
+
+        characterController.Move(move * speed * Time.deltaTime);
+
+        velocity.y += gravity * Time.deltaTime;
+
+        characterController.Move(velocity * Time.deltaTime);
+
+
+
+
+
+
+
+
 
     }
 }
