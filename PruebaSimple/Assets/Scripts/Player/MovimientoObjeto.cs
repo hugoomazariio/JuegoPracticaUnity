@@ -18,12 +18,12 @@ public class MovimientoObjeto : MonoBehaviour
     public float sphereRadius = 0.3f;
     public LayerMask groundMask;
 
-    bool isGrounded;
+    bool isGrounded; //Me va a decir si está tocando el suelo mediante true o false
 
 
     Vector3 velocity;
 
-    public float jumpHeight = 3f;
+    public float jumpHeight = 2f;
 
     void Update()
     {
@@ -32,7 +32,7 @@ public class MovimientoObjeto : MonoBehaviour
 
         if (isGrounded && velocity.y < 0)
         {
-            velocity.y = -2f;
+            velocity.y = -3f;
         }
 
 
@@ -41,7 +41,7 @@ public class MovimientoObjeto : MonoBehaviour
 
         Vector3 move = transform.right * x + transform.forward * z;
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded) //Salto personaje
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
         }
