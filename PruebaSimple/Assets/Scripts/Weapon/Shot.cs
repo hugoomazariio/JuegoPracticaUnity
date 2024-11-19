@@ -19,10 +19,20 @@ public class Shot : MonoBehaviour
         //fire1 es el click izqd del ratón
         if (Input.GetButtonDown("Fire1"))
         {
-            GameObject newBullet;
+            if (Time.time > shotRateTime)
+            {
+                GameObject newBullet;
 
-            newBullet = Instantiate(bullet, spawnPoint.position, spawnPoint.rotation); 
-            // Instancia un objeto (prefab en este caso) en una posición y con una rotación específica que le decimos
+                newBullet = Instantiate(bullet, spawnPoint.position, spawnPoint.rotation);
+                // Instancia un objeto (prefab en este caso) en una posición y con una rotación específica que le decimos
+
+                newBullet.GetComponent<Rigidbody>().AddForce(spawnPoint.forward * shotForce);
+
+                shotRateTime= Time.time + shotRate;
+
+                Destroy(newBullet,5);
+            }
+
         }
     }
 }
