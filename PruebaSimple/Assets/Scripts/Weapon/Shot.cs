@@ -30,7 +30,7 @@ public class Shot : MonoBehaviour
 
                 shotRateTime= Time.time + shotRate;
 
-                Destroy(newBullet,5);
+                Destroy(newBullet,2);
             }
 
         }
