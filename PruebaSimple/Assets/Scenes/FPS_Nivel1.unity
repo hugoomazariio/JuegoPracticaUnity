@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.8840427, g: 0.7406979, b: 0.4948878, a: 1}
+  m_IndirectSpecularColor: {r: 0.8840427, g: 0.740698, b: 0.4948878, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -17226,7 +17226,7 @@ GameObject:
   - component: {fileID: 1744285470}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19489,7 +19489,7 @@ GameObject:
   - component: {fileID: 1914919612}
   m_Layer: 0
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20304,6 +20304,7 @@ GameObject:
   - component: {fileID: 1982092439}
   - component: {fileID: 1982092442}
   - component: {fileID: 1982092443}
+  - component: {fileID: 1982092444}
   m_Layer: 0
   m_Name: Skeleton_Perseguir_Player
   m_TagString: Untagged
@@ -20436,6 +20437,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1982092444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982092437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b27d09a905186e14fa2edcdce210eb78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameOverText: {fileID: 0}
 --- !u!1 &1984315235
 GameObject:
   m_ObjectHideFlags: 0
