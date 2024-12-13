@@ -136,7 +136,6 @@ GameObject:
   - component: {fileID: 219501117}
   - component: {fileID: 219501116}
   - component: {fileID: 219501115}
-  - component: {fileID: 219501114}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -144,21 +143,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &219501114
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 219501113}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43f07988db537de4c8cce1a47bdbe151, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeedX: 10
-  rotationSpeedY: 20
-  rotationSpeedZ: 30
 --- !u!114 &219501115
 MonoBehaviour:
   m_ObjectHideFlags: 0
