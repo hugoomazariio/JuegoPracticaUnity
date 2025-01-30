@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement; //Acceso a las herramientas de cambios de esc
 
 public class EliminatePlayer : MonoBehaviour
 {
-
+    
     // Este método se llama cuando el enemigo colisiona con otro objeto, en este caso, se va a hacer que al tocar al player lo elimina.
     void OnCollisionEnter(Collision collision)
     {
@@ -17,7 +17,7 @@ public class EliminatePlayer : MonoBehaviour
             // Termina la ejecución de unity
             // UnityEditor.EditorApplication.isPlaying=false;
             // Me permite cambiar de escena
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene(2);
 
             // Escribe por consola que el jugador ha sido eliminado
             Debug.Log("El jugador ha sido eliminado. Has perdido el juego.");

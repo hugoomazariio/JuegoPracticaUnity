@@ -19,8 +19,11 @@ public class Shot : MonoBehaviour
         //fire1 es el click izqd del ratón
         if (Input.GetButtonDown("Fire1"))
         {
-            if (Time.time > shotRateTime)
+            if (Time.time > shotRateTime && GameManagerJuego.Instance.gunAmmo > 0)
+                // Ahora se tiene que cumplir que el GameManager sea mayor a 0 y podré disparar. Por eso, ahora tendré que ir reduciendo la munición.
             {
+                GameManagerJuego.Instance.gunAmmo--; // Una unidad menos por cada vez que disparemos
+
                 GameObject newBullet;
 
                 newBullet = Instantiate(bullet, spawnPoint.position, spawnPoint.rotation);
