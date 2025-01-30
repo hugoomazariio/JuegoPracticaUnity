@@ -17,7 +17,7 @@ public class EliminatePlayer : MonoBehaviour
             // Termina la ejecución de unity
             // UnityEditor.EditorApplication.isPlaying=false;
             // Me permite cambiar de escena
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(3);
 
             // Escribe por consola que el jugador ha sido eliminado
             Debug.Log("El jugador ha sido eliminado. Has perdido el juego.");
