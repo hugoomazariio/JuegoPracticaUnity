@@ -33,11 +33,12 @@ public class GameManager : MonoBehaviour
     public void CargarMenu()
     {
         isSceneChangeRequested = true; // Marcar que se ha solicitado un cambio de escena
-        SceneManager.LoadScene(0); // Asegúrate de que el índice del menú es correcto
+        SceneManager.LoadScene(0); // Cambia al índice de la escena del menú
     }
 
     public void CargarJuego()
     {
+        Time.timeScale = 1f; // Si lo pones 0 pausa el juego.
         isSceneChangeRequested = true; // Marcar que se ha solicitado un cambio de escena
         SceneManager.LoadScene(1); // Cambia al índice de la escena del juego
     }
