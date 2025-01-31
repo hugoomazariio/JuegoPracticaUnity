@@ -1,16 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro; 
 
 public class GameManagerJuego : MonoBehaviour
 {
-    public Text ammoText;
-
-
+    public TMP_Text ammoText; 
     public static GameManagerJuego Instance { get; private set; }
-
-
     public int gunAmmo = 25;
 
     private void Awake()
@@ -20,6 +16,13 @@ public class GameManagerJuego : MonoBehaviour
 
     private void Update()
     {
-        ammoText.text = gunAmmo.ToString();
+        if (ammoText != null)
+        {
+            ammoText.text = gunAmmo.ToString();
+        }
+        else
+        {
+            Debug.LogError("El componente TextMeshPro no ha sido asignado.");
+        }
     }
 }
