@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
     public void SalirJuego()
     {
         Debug.Log("Saliendo del juego...");
-        // Application.Quit(); // Esto solo va a funcionar cuando el juego esté exportado, ejecutándolo en Unity no funcionará
-        UnityEditor.EditorApplication.isPlaying = false; // Va a terminar la ejecución del programa en el editor.
+        Application.Quit(); // Esto solo va a funcionar cuando el juego esté exportado, ejecutándolo en Unity no funcionará
+        // UnityEditor.EditorApplication.isPlaying = false; // Va a terminar la ejecución del programa en el editor.
     }
 }
