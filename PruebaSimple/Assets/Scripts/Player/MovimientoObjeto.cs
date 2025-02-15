@@ -18,6 +18,10 @@ public class MovimientoObjeto : MonoBehaviour
     public float sphereRadius = 0.3f;
     public LayerMask groundMask;
 
+    public AudioSource pasos; // Esto va a a hacer que en el momento que el player de pasos, sonará un audio de unos pasos
+    private bool H_Activo; // Para diferenciar cuando está presionada la tecla y cuando no
+    private bool V_Activo;
+
     bool isGrounded; //Transform que me va a decir si está tocando el suelo mediante true o false
 
 
@@ -58,6 +62,48 @@ public class MovimientoObjeto : MonoBehaviour
         velocity.y += gravity * Time.deltaTime; // La gravedad afecta la componente vertical de la velocidad
 
         characterController.Move(velocity * Time.deltaTime); // El movimiento vertical se aplica también con characterController.Move, acumulando el efecto de la gravedad.
-      
+
+        // Esto va a hacer que en el momento que el jugador pulse, las teclas WASD suenen los pasos.
+        if (Input.GetButtonDown("Horizontal"))
+        {
+            if (V_Activo == false)
+            {
+                H_Activo = true;
+                pasos.Play();
+            }
+        }
+
+        if (Input.GetButtonDown("Vertical"))
+        {
+            if(H_Activo == false)
+            {
+                V_Activo = true;
+                pasos.Play();
+            }
+
+        }
+
+        // Si dejamos de pulsar las teclas el sonido se pausa
+        if (Input.GetButtonUp("Horizontal"))
+        {
+            H_Activo = false;
+
+            // Tiene que corroborar que las teclas verticales no están siendo presionadas
+            if (V_Activo == false)
+            {
+                pasos.Pause();
+            }
+        }
+
+        if (Input.GetButtonUp("Vertical"))
+        {
+            V_Activo=false;
+
+            // Tienen que corroborar que las teclas horizontales no están siendo presionadas
+            if (H_Activo == false)
+            {
+                pasos.Pause();
+            }
+        }
     }
 }
